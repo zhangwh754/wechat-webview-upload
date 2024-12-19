@@ -196,12 +196,14 @@
         reader.onload = function (loadEvent) {
           spark.append(loadEvent.target.result);
           var md5Hash = spark.end();
+          var md5Filename = md5Hash + '.' + file.name.split('.').pop()
+
           // Get base64 data
           const base64Data = loadEvent.target.result.split(",")[1];
 
           filesData.push({
             base64Data: base64Data,
-            md5Hash: md5Hash,
+            md5Filename: md5Filename,
             fileSize: file.size,
             name: file.name
           });
